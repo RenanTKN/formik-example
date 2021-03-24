@@ -1,8 +1,15 @@
 import React from "react";
-import { withFormik } from "formik";
+import { FormikProps, withFormik } from "formik";
 import * as yup from "yup";
 
-const Form = (props: any) => {
+interface FormValues {
+  name: string;
+  email: string;
+  website: string;
+  age: number | null;
+}
+
+const Form: React.FC<FormikProps<FormValues>> = (props: any) => {
   const {
     values,
     touched,
@@ -69,8 +76,8 @@ const formSchema = yup.object().shape({
   age: yup.number().required().positive().integer().max(200),
 });
 
-const MyEnhancedForm = withFormik({
-  mapPropsToValues: () => ({ name: "", email: "", website: "", age: "" }),
+const MyEnhancedForm = withFormik<{}, FormValues>({
+  mapPropsToValues: () => ({ name: "", email: "", website: "", age: null }),
   validationSchema: formSchema,
   handleSubmit: (values, { setSubmitting }) => {
     setTimeout(() => {
