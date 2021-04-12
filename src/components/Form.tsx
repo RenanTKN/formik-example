@@ -2,6 +2,8 @@ import React from "react";
 import { FormikProps, withFormik } from "formik";
 import * as yup from "yup";
 
+import * as Styled from "./Form.styled";
+
 interface FormValues {
   name: string;
   email: string;
@@ -20,48 +22,58 @@ const Form: React.FC<FormikProps<FormValues>> = (props: any) => {
   } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h1>Formik</h1>
-        <input
-          type="text"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.name}
-          name="name"
-          placeholder="Name"
-        />
-        {errors.name && touched.name && <div>{errors.name}</div>}
-        <input
-          type="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          name="email"
-          placeholder="Email"
-        />
-        {errors.email && touched.email && <div>{errors.email}</div>}
-        <input
-          type="text"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.website}
-          name="website"
-          placeholder="Website"
-        />
-        {errors.website && touched.website && <div>{errors.website}</div>}
-        <input
-          type="number"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.age}
-          name="age"
-          placeholder="Age"
-        />
-        {errors.age && touched.age && <div>{errors.age}</div>}
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+    <Styled.Container>
+      <form onSubmit={handleSubmit}>
+        <Styled.FormFields>
+          <h1>Formik</h1>
+          <Styled.InputContainer>
+            <input
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              name="name"
+              placeholder="Name"
+            />
+          </Styled.InputContainer>
+          {errors.name && touched.name && <div>{errors.name}</div>}
+          <Styled.InputContainer>
+            <input
+              type="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              name="email"
+              placeholder="Email"
+            />
+          </Styled.InputContainer>
+          {errors.email && touched.email && <div>{errors.email}</div>}
+          <Styled.InputContainer>
+            <input
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.website}
+              name="website"
+              placeholder="Website"
+            />
+          </Styled.InputContainer>
+          {errors.website && touched.website && <div>{errors.website}</div>}
+          <Styled.InputContainer>
+            <input
+              type="number"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.age}
+              name="age"
+              placeholder="Age"
+            />
+          </Styled.InputContainer>
+          {errors.age && touched.age && <div>{errors.age}</div>}
+          <Styled.Button type="submit">Submit</Styled.Button>
+        </Styled.FormFields>
+      </form>
+    </Styled.Container>
   );
 };
 

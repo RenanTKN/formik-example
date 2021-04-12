@@ -1,11 +1,14 @@
-.App > form {
+import styled from "@emotion/styled";
+
+export const Container = styled.div`
   height: 100vh;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-}
+`;
 
-.App > form > div {
+export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,12 +18,12 @@
   box-shadow: 0 0 10px #ccc;
   padding: 10px;
   border-radius: 10px;
-}
+`;
 
-input {
+export const InputContainer = styled.div`
   margin-bottom: 10px;
-}
+`;
 
-button {
+export const Button = styled.button`
   cursor: pointer;
-}
+`;
